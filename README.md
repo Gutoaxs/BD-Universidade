@@ -110,10 +110,10 @@ BEGIN
   DECLARE email_count INT;
   SET email_count = 0;
   
-  -- Check if an email with the same name and surname already exists
+
   SELECT COUNT(*) INTO email_count FROM Aula10.aluno WHERE email = CONCAT(NEW.nome, '.', NEW.sobrenome, '@facens.com');
   
-  -- If there is a conflict, add an incremental number to the email
+ 
   IF email_count > 0 THEN
     SET NEW.email = CONCAT(NEW.nome, '.', NEW.sobrenome, email_count, '@facens.com');
   ELSE
@@ -121,7 +121,7 @@ BEGIN
   END IF;
 END;
 
-$$
+
 
 DELIMITER ;
 
